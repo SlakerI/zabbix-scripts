@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/bot-api/telegram"
+	"github.com/kardianos/osext"
 	"github.com/naoina/toml"
 	"golang.org/x/net/context"
 )
@@ -18,7 +19,12 @@ type Config struct {
 
 func main() {
 
-	f, err := os.Open("telegrammessage.conf")
+	folderPath, err := osext.ExecutableFolder()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	f, err := os.Open(folderPath + "/telegrammessage.conf")
 	if err != nil {
 		panic(err)
 	}
@@ -38,7 +44,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	if user, err = api.GetMe(ctx); err != nil {
+	if user, err := api.GetMe(ctx); err != nil {
 		log.Panic(err)
 	} else {
 		log.Printf("bot info: %#v", user)
