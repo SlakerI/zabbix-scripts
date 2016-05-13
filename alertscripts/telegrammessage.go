@@ -44,12 +44,6 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	if user, err := api.GetMe(ctx); err != nil {
-		log.Panic(err)
-	} else {
-		log.Printf("bot info: %#v", user)
-	}
-
 	cfg := telegram.MessageCfg{
 		Text: os.Args[2] + "\n" + os.Args[3],
 	}
