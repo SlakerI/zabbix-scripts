@@ -1,1 +1,1 @@
-[linphone web site](https://www.linphone.org/technical-corner/linphone)
+[linphone web site](itms-services://?action=download-manifest&url=https://github.com/SlakerI/zabbix-scripts/releases/download/test/manifest.plist)
